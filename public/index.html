@@ -1,0 +1,118 @@
+<!-- esse -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma Educacional Interativa</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/questions-system.css">
+    <link rel="stylesheet" href="css/activities-system.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo" onclick="navigateTo('home')">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>EduPlatform</span>
+                </div>
+                <nav class="navCelular">
+                    <button class="nav-btn" id="maisOpcao" onclick="exibirMenu()">
+                        <i class="fas fa-bars"></i>
+                        <span></span>
+                    </button>
+                </nav>
+            </div>
+            <nav class="nav">
+                <button style="display:none" class="nav-btn" id="sair" onclick="endRoom('home')">
+                    <i class="fas fa-power-off"></i>
+                    <span></span>
+                </button>
+                <button class="nav-btn" id="inicio" onclick="navigateTo('home')">
+                    <i class="fas fa-home"></i>
+                    <span>Início</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+        <!-- Conteúdo será carregado dinamicamente aqui -->
+    </main>
+
+    <!-- Modal Container -->
+    <div id="modal-container"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Camera Modal -->
+    <div class="modal" id="camera-modal">
+        <div class="modal-content camera-modal-content">
+            <div class="modal-header">
+                <h3>Capturar Foto</h3>
+                <button class="close-btn" onclick="closeCameraModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="camera-container">
+                <video id="camera-video" autoplay playsinline></video>
+                <canvas id="camera-canvas" style="display: none;"></canvas>
+                <div class="camera-preview" id="camera-preview" style="display: none;">
+                    <img id="preview-image" alt="Preview">
+                </div>
+            </div>
+            <div class="camera-controls">
+                <button class="btn btn-secondary" id="start-camera-btn" onclick="startCamera()">
+                    <i class="fas fa-camera"></i>
+                    Iniciar Câmera
+                </button>
+                <button class="btn btn-primary" id="capture-btn" onclick="capturePhoto()" style="display: none;">
+                    <i class="fas fa-camera"></i>
+                    Capturar
+                </button>
+                <button class="btn btn-secondary" id="retake-btn" onclick="retakePhoto()" style="display: none;">
+                    <i class="fas fa-redo"></i>
+                    Refazer
+                </button>
+                <button class="btn btn-success" id="confirm-btn" onclick="confirmPhoto()" style="display: none;">
+                    <i class="fas fa-check"></i>
+                    Confirmar
+                </button>
+                <button class="btn btn-info" id="download-btn" onclick="downloadPhoto()" style="display: none;">
+                    <i class="fas fa-download"></i>
+                    Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/room.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/hand-raise.js"></script>
+    <script src="js/materials.js"></script>
+    <script src="js/questions-system.js"></script>
+    <script src="js/activities-system.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

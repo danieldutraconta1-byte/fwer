@@ -1,0 +1,189 @@
+<div class="student-room-page">
+    <div class="div-header">
+        <div class="room-header">
+            <div class="container">
+                <div class="room-info">
+                    <h1><i class="fas fa-users"></i> Sala Temporária</h1>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="room-details">
+                        <span class="room-code">Código: <strong id="current-room-code">------</strong></span>
+                        <span class="room-status">
+                            <i class="fas fa-circle status-indicator"></i>
+                            <span id="room-status-text">Conectado</span>
+                        </span>
+                    </div> -->
+
+    <div class="room-content">
+        <div class="container">
+            <div class="room-features">
+                <div class="feature-grid">
+                    <div class="feature-item" onclick="markAttendance()">
+                        <div class="feature-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Marcar Presença</h3>
+                        <p>Confirme sua presença na aula</p>
+                    </div>
+
+                    <div class="feature-item" onclick="raiseHand()">
+                        <div class="feature-icon" id="iconeMao">
+                            <i class="fas fa-hand-fist" ></i>
+                        </div>
+                        <h3>Levantar a Mão</h3>
+                        <p>Solicite a atenção do professor</p>
+                    </div>
+
+                    <div class="feature-item" onclick="openStudentQuestionModal()">
+                        <div class="feature-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3>Fazer Pergunta</h3>
+                        <p>Envie uma pergunta para o professor</p>
+                    </div>
+
+                    <div class="feature-item"  onclick="openStudentMaterials()">
+                        <div class="feature-icon">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <h3>Material de Apoio</h3>
+                        <p>Acesse materiais da aula em um click</p>
+                    </div>
+
+                    <div class="feature-item" onclick="openStudentActivities()">
+                        <div class="feature-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>Ver Atividades</h3>
+                        <p>Veja e responda atividades</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="room-chat" id="room-chat" style="display: none;">
+                <div class="chat-header">
+                    <h3>Chat da Sala</h3>
+                    <button class="btn btn-small btn-secondary" onclick="toggleChat()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Messages will be loaded here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-message-input" placeholder="Digite sua mensagem...">
+                    <button class="btn btn-primary" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Student Name Modal -->
+<div class="modal" id="student-name-modal" style="display: flex;">
+    <div class="modal-content student-name-modal-content">
+        <div class="modal-header">
+            <h3>Bem-vindo à sala!</h3>
+        </div>
+        <div class="modal-body">
+            <p>Para participar das atividades, por favor digite seu nome:</p>
+            <div class="form-group">
+                <input type="text" id="student-name-input" placeholder="Digite seu nome completo" maxlength="50" class="student-name-input">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" onclick="confirmStudentName()">
+                <i class="fas fa-check"></i>
+                Confirmar
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Student Materials Modal -->
+<div class="modal" id="student-materials-modal" style="display: none;">
+    <div class="modal-content materials-modal-content">
+        <div class="modal-header">
+            <h3>Material</h3>
+            <button class="btn-secondary" onclick="closeStudentMaterials()">
+                <i class="fas fa-times"></i> Fechar
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="student-materials-list" id="student-materials-section">
+                <!-- Materials will be loaded here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Student Question Modal -->
+<div class="modal student-question-modal" id="student-question-modal" style="display: none;">
+    <div class="question-modal-content">
+        <div class="question-modal-header">
+            <h3>Fazer Pergunta</h3>
+            <button class="close-modal-btn" onclick="closeStudentQuestionModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="question-form">
+            <div class="form-group">
+                <label for="question-input">Sua pergunta:</label>
+                <textarea id="question-input" class="question-input" placeholder="Digite sua pergunta aqui..." rows="4"></textarea>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-cancel" onclick="closeStudentQuestionModal()">Cancelar</button>
+                <button class="btn btn-submit" data-action="submit-question">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Pergunta
+                </button>
+            </div>
+        </div>
+        
+        <!-- Perguntas enviadas pelo aluno -->
+        <div class="student-questions-sent" id="student-questions-sent" style="margin-top: 1.5rem;">
+            <h4>Suas perguntas enviadas:</h4>
+            <!-- Lista de perguntas será carregada aqui -->
+        </div>
+    </div>
+</div>
+
+<!-- Student Activities Section -->
+<div class="content-section activities-section" id="student-activities-section" style="display: none;">
+    <div class="activities-header">
+        <h2>Atividades Disponíveis</h2>
+        <div class="activities-actions">
+            <button class="btn btn-secondary" onclick="closeAllSections()">
+                <i class="fas fa-times"></i> Fechar
+            </button>
+        </div>
+    </div>
+    <div class="activities-list" id="student-activities-list">
+        <!-- Lista de atividades será carregada aqui -->
+    </div>
+</div>
+
+<!-- Activity Modal for Students -->
+<div class="modal activity-modal" id="activity-modal" style="display: none;">
+    <div class="activity-modal-content">
+        <div class="activity-modal-header">
+            <h3 class="modal-title">Atividade</h3>
+            <button class="close-modal-btn" data-action="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="activity-content">
+            <!-- Conteúdo da atividade será carregado aqui -->
+        </div>
+    </div>
+</div>
+

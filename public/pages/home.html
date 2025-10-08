@@ -1,0 +1,149 @@
+<!-- //esse(1) -->
+<div class="home-page">
+    <div class="hero-section">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>Plataforma Educacional Interativa</h1>
+            <p class="hero-description">
+                Conectando alunos e professores em um ambiente digital moderno e intuitivo.
+            </p>
+            <div class="user-type-buttons">
+                <button class="btn btn-primary btn-large" id="buttonIicial" onclick="showStudentAccess()">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Sou Aluno</span>
+                </button>
+                <button class="btn btn-secondary btn-large" id="buttonIicial" onclick="navigateTo('teacher-panel')">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Sou Professor</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Student Access Section -->
+    <div class="student-access-section" id="student-access-section" style="display: none;">
+        <div class="container">
+            <div class="access-content">
+                <div class="access-header">
+                    <h2>Acesso do Aluno</h2>
+                </div>
+                
+                <div class="access-options">
+                    <div class="access-option" onclick="showCodeInput()">
+                        <div class="option-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h3>Inserir Código</h3>
+                        <p>Digite o código de 6 dígitos fornecido pelo professor</p>
+                    </div>
+                    
+                    <div class="access-option" onclick="showQRScanner()">
+                        <div class="option-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <h3>Ler QR Code</h3>
+                        <p>Use a câmera para escanear o QR Code da sala</p>
+                    </div>
+                </div>
+                
+                <button class="btn btn-secondary"  id="voltarAluno" onclick="hideStudentAccess()">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Codigo input -->
+    <div class="code-input-section" id="code-input-section" style="display: none;">
+        <div class="container">
+            <div class="code-input-content">
+                <div class="code-header">
+                    <h2>Inserir Código da Sala</h2>
+                    <p>Digite o código de 6 dígitos fornecido pelo seu professor</p>
+                </div>
+                
+                <div class="code-form">
+                    <div class="code-input-group">
+                        <input type="text" id="room-code-input" maxlength="6" placeholder="000000" class="code-input">
+                        <button class="btn btn-primary" onclick="joinRoomByCode()">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Entrar na Sala
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="code-actions" >
+                    <button class="btn btn-secondary"  onclick="backToStudentAccess()">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- QR Scanner Section -->
+    <div class="qr-scanner-section" id="qr-scanner-section" style="display: none;">
+        <div class="container">
+            <div class="qr-scanner-content">
+                <div class="scanner-header">
+                    <h2>Escanear QR Code</h2>
+                    <p>Posicione o QR Code dentro da área de escaneamento</p>
+                </div>
+                
+                <div class="scanner-container">
+                    <div class="scanner-frame">
+                        <video id="qr-video" autoplay playsinline></video>
+                        <div class="scanner-overlay">
+                            <div class="scanner-box"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scanner-actions">
+                    <button class="btn btn-primary" id="start-scanner-btn" onclick="startQRScanner()">
+                        <i class="fas fa-camera"></i>
+                        Iniciar Câmera
+                    </button>
+                    <button class="btn btn-secondary" onclick="backToStudentAccess()">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="features-section">
+        <div class="container">
+            <h2>Recursos da Plataforma</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Gestão de Tarefas</h3>
+                    <p>Envie e receba tarefas de forma organizada e eficiente</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Controle de Presença</h3>
+                    <p>Sistema inteligente de marcação de presença com foto</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Quizzes Interativos</h3>
+                    <p>Crie e responda quizzes para avaliar o aprendizado</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
